@@ -1,171 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fırat Yurdakul | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fırat Yurdakul | Software Engineer</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header>
-    <nav class="navbar">
-        <div class="logo">Fırat Yurdakul</div>
-        <ul class="nav-links">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <div id="particles-js"></div>
+
+    <nav>
+        <div class="logo">FY.</div>
+        <div class="nav-links">
+            <a href="#about">ACADEMIC</a>
+            <a href="#work">PROJECTS</a>
+            <a href="mailto:fy.firatyurdakul@gmail.com">HIRE ME</a>
+        </div>
     </nav>
-</header>
 
-<section class="hero">
-    <h1>Hello, I'm <span>Fırat</span></h1>
-    <p>Computer Engineer • Mobile Developer • ML Enthusiast • Game Developer</p>
-</section>
+    <div class="container">
+        <header>
+            <h1 class="hero-title">FIRAT<br>YURDAKUL</h1>
+            <p class="hero-subtitle">Engineering the future of digital experiences at Sabancı University.</p>
+        </header>
 
-<section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-        I'm a Computer Science & Engineering graduate from Sabancı University.  
-        I build mobile apps with Flutter, backend systems, ML pipelines, full-stack applications, and games with Unity.  
-        I also studied abroad at Maribor University during my Erasmus program.
-    </p>
-</section>
+        <section id="about">
+            <span class="section-title">Academic Background</span>
+            <div class="grid">
+                <div class="card">
+                    <span class="date">2021 — 2025</span>
+                    <h3>Sabancı University</h3>
+                    <p>Computer Science & Engineering graduate. Focus on ML & Software Architecture.</p>
+                    <div class="tags"><span class="tag">Istanbul</span></div>
+                </div>
+                <div class="card">
+                    <span class="date">2024</span>
+                    <h3>Maribor Uni</h3>
+                    <p>Erasmus Exchange. Mastering Database Systems & Web Technologies.</p>
+                    <div class="tags"><span class="tag">Slovenia</span></div>
+                </div>
+            </div>
+        </section>
 
-<section id="skills" class="section">
-    <h2>Skills</h2>
-
-    <div class="skill-category">
-        <h3>Programming Languages</h3>
-        <div class="skills-grid">
-            <div class="skill-card">Java</div>
-            <div class="skill-card">Python</div>
-            <div class="skill-card">C++</div>
-            <div class="skill-card">C</div>
-            <div class="skill-card">C#</div>
-            <div class="skill-card">Dart</div>
-        </div>
+        <footer>
+            <h2 class="cta-text">Building things?</h2>
+            <div class="footer-links">
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">GitHub</a>
+                <a href="mailto:fy.firatyurdakul@gmail.com" class="social-link">Email</a>
+            </div>
+            <p class="copyright">© 2025 FIRAT YURDAKUL.</p>
+        </footer>
     </div>
 
-    <div class="skill-category">
-        <h3>Web & Mobile Development</h3>
-        <div class="skills-grid">
-            <div class="skill-card">Flutter</div>
-            <div class="skill-card">HTML</div>
-            <div class="skill-card">CSS</div>
-            <div class="skill-card">JavaScript</div>
-        </div>
-    </div>
-
-    <div class="skill-category">
-        <h3>Database Technologies</h3>
-        <div class="skills-grid">
-            <div class="skill-card">MongoDB</div>
-            <div class="skill-card">MySQL</div>
-            <div class="skill-card">Firebase Firestore</div>
-        </div>
-    </div>
-
-    <div class="skill-category">
-        <h3>Cloud, Tools & Others</h3>
-        <div class="skills-grid">
-            <div class="skill-card">Git</div>
-            <div class="skill-card">GCP</div>
-            <div class="skill-card">Bash</div>
-            <div class="skill-card">.NET</div>
-            <div class="skill-card">Unity</div>
-            <div class="skill-card">Android Studio</div>
-        </div>
-    </div>
-
-</section>
-
-<section id="projects" class="section">
-    <h2>Projects</h2>
-
-    <!-- PROJECT TEMPLATE -->
-    <div class="project-card">
-        <div class="project-header">
-            <h3>Machine Learning Project – CS412</h3>
-            <p class="short-desc">Influencer classification & engagement prediction</p>
-        </div>
-        <div class="project-content">
-            <p>
-                Built a full machine learning pipeline to classify influencers and predict engagement rates using social
-                media data. Applied TF-IDF for text feature extraction, Naive Bayes for classification, and
-                time-weighted regression for predicting engagement. Developed entirely in Google Colab with Python,
-                Pandas, scikit-learn, and NLTK.
-            </p>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <div class="project-header">
-            <h3>Network Applications (C#, .NET)</h3>
-            <p class="short-desc">Client–server sockets & protocol design</p>
-        </div>
-        <div class="project-content">
-            <p>
-                Implemented server–client communication systems using socket programming in C#. Designed an application-layer protocol, built reliable data transfer logic, and developed multi-client handling for real-time communication within .NET environment.
-            </p>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <div class="project-header">
-            <h3>Full-Stack Quiz App (MERN)</h3>
-            <p class="short-desc">React quiz platform with dynamic API questions</p>
-        </div>
-        <div class="project-content">
-            <p>
-                Developed a full-stack quiz application using MongoDB, Express.js, React, and Node.js. Integrated the
-                Open Trivia API for real-time question retrieval. Implemented user authentication, session management,
-                and a dynamic UI with live scoring based on answer speed and correctness.
-            </p>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <div class="project-header">
-            <h3>Flutter Event Sharing App (CS310)</h3>
-            <p class="short-desc">Mobile event-sharing platform with Firebase</p>
-        </div>
-        <div class="project-content">
-            <p>
-                Developed a Flutter-based mobile application where authenticated users can create, share, and browse
-                events. Implemented Firebase Authentication, real-time Firestore integration, structured state
-                management using Provider/BLoC/Riverpod, and responsive UI components.
-            </p>
-        </div>
-    </div>
-
-    <div class="project-card">
-        <div class="project-header">
-            <h3>2D Platformer Game (Unity)</h3>
-            <p class="short-desc">Platformer mechanics, animation and AI</p>
-        </div>
-        <div class="project-content">
-            <p>
-                Built a 2D platformer game using Unity and C#. Implemented physics-based character movement, jump
-                mechanics, enemy AI, tilemap-based level design, UI elements (HUD, health bar, menus), and a clean,
-                component-based architecture for scalability.
-            </p>
-        </div>
-    </div>
-
-</section>
-
-<section id="contact" class="section contact">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:fy.firatyurdakul@gmail.com">fy.firatyurdakul@gmail.com</a></p>
-</section>
-
-<footer>
-    <p>© 2025 Fırat Yurdakul</p>
-</footer>
-
-<script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
