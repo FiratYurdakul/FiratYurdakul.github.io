@@ -1,9 +1,6 @@
-// Smooth scrolling
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth"
-        });
+// Expandable project descriptions
+document.querySelectorAll(".project-card").forEach(card => {
+    card.addEventListener("click", () => {
+        card.classList.toggle("open");
     });
 });
