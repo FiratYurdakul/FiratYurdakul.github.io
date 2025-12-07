@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Fırat Yurdakul - Software Engineer Portfolio">
     <title>Fırat Yurdakul - Software Engineer</title>
     <style>
-        * {
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         :root {
@@ -21,7 +26,7 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             background-color: var(--primary);
             color: var(--text);
             line-height: 1.6;
@@ -34,7 +39,6 @@
             padding: 0 20px;
         }
 
-        /* Navigation */
         nav {
             position: fixed;
             top: 0;
@@ -43,6 +47,10 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
             box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
         }
 
@@ -57,6 +65,11 @@
             font-weight: bold;
             color: var(--accent);
             text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
         }
 
         .nav-links {
@@ -71,16 +84,13 @@
             font-size: 14px;
             transition: color 0.3s;
             position: relative;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
+            padding: 5px 0;
         }
 
         .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
@@ -88,17 +98,28 @@
             transition: width 0.3s;
         }
 
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
         .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* Hero Section */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--accent);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             padding-top: 100px;
-            position: relative;
         }
 
         .hero-content {
@@ -113,14 +134,14 @@
         }
 
         .hero h2 {
-            font-size: 72px;
+            font-size: clamp(40px, 8vw, 72px);
             color: var(--white);
             margin-bottom: 10px;
             font-weight: 700;
         }
 
         .hero h3 {
-            font-size: 60px;
+            font-size: clamp(35px, 7vw, 60px);
             color: var(--text);
             margin-bottom: 30px;
         }
@@ -135,6 +156,7 @@
         .cta-buttons {
             display: flex;
             gap: 20px;
+            flex-wrap: wrap;
         }
 
         .btn {
@@ -147,6 +169,7 @@
             font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
+            display: inline-block;
         }
 
         .btn:hover {
@@ -164,26 +187,25 @@
             color: var(--accent);
         }
 
-        /* Section Styling */
         section {
             padding: 100px 0;
-            position: relative;
         }
 
         .section-title {
             display: flex;
             align-items: center;
-            font-size: 32px;
+            font-size: clamp(26px, 5vw, 32px);
             color: var(--white);
             margin-bottom: 50px;
+            counter-increment: section;
         }
 
         .section-title::before {
             content: '0' counter(section) '.';
-            counter-increment: section;
             margin-right: 10px;
             color: var(--accent);
-            font-size: 24px;
+            font-size: 20px;
+            font-weight: normal;
         }
 
         .section-title::after {
@@ -195,7 +217,6 @@
             background: var(--secondary);
         }
 
-        /* About Section */
         #about {
             counter-reset: section;
         }
@@ -222,12 +243,15 @@
         .skill-item {
             color: var(--text);
             font-size: 14px;
+            padding-left: 20px;
+            position: relative;
         }
 
         .skill-item::before {
             content: '▹';
             color: var(--accent);
-            margin-right: 10px;
+            position: absolute;
+            left: 0;
         }
 
         .about-image {
@@ -255,15 +279,9 @@
         .about-image img {
             width: 100%;
             border-radius: 4px;
-            filter: grayscale(100%) contrast(1);
-            transition: filter 0.3s;
+            display: block;
         }
 
-        .about-image:hover img {
-            filter: grayscale(0%) contrast(1);
-        }
-
-        /* Experience Section */
         .experience-container {
             display: flex;
             gap: 30px;
@@ -286,6 +304,7 @@
             margin-left: -2px;
             transition: all 0.3s;
             font-size: 14px;
+            font-family: inherit;
         }
 
         .tab-button:hover,
@@ -309,8 +328,14 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { 
+                opacity: 0; 
+                transform: translateY(10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
         }
 
         .experience-panel h3 {
@@ -348,7 +373,6 @@
             left: 0;
         }
 
-        /* Projects Section */
         .projects-grid {
             display: grid;
             gap: 30px;
@@ -386,18 +410,21 @@
         .project-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
             margin-bottom: 20px;
+            gap: 20px;
         }
 
         .project-card h3 {
             color: var(--white);
             font-size: 24px;
+            flex: 1;
         }
 
         .project-date {
             color: var(--accent);
             font-size: 14px;
+            white-space: nowrap;
         }
 
         .project-card p {
@@ -439,7 +466,6 @@
             border-radius: 3px;
         }
 
-        /* Education Section */
         .education-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -495,7 +521,6 @@
             left: 0;
         }
 
-        /* Contact Section */
         .contact-content {
             max-width: 600px;
             margin: 0 auto;
@@ -503,7 +528,7 @@
         }
 
         .contact-content h2 {
-            font-size: 48px;
+            font-size: clamp(36px, 6vw, 48px);
             color: var(--white);
             margin-bottom: 20px;
         }
@@ -518,12 +543,14 @@
             justify-content: center;
             gap: 30px;
             margin-top: 50px;
+            flex-wrap: wrap;
         }
 
         .contact-link {
             color: var(--text-light);
             font-size: 24px;
             transition: all 0.3s;
+            text-decoration: none;
         }
 
         .contact-link:hover {
@@ -531,7 +558,6 @@
             transform: translateY(-3px);
         }
 
-        /* Footer */
         footer {
             text-align: center;
             padding: 30px 0;
@@ -539,36 +565,45 @@
             font-size: 14px;
         }
 
-        /* Mobile Menu */
-        .mobile-menu-btn {
-            display: none;
-            background: transparent;
-            border: none;
-            color: var(--accent);
-            font-size: 24px;
-            cursor: pointer;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
 
-        /* Responsive */
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         @media (max-width: 768px) {
             .nav-links {
+                position: fixed;
+                top: 70px;
+                right: 0;
+                background: var(--secondary);
+                flex-direction: column;
+                padding: 30px;
+                width: 250px;
                 display: none;
+                box-shadow: 0 10px 30px rgba(2, 12, 27, 0.7);
+            }
+
+            .nav-links.active {
+                display: flex !important;
             }
 
             .mobile-menu-btn {
                 display: block;
             }
 
-            .hero h2 {
-                font-size: 48px;
-            }
-
-            .hero h3 {
-                font-size: 40px;
-            }
-
             .about-content {
                 grid-template-columns: 1fr;
+            }
+
+            .about-image {
+                max-width: 300px;
+                margin: 0 auto;
             }
 
             .experience-container {
@@ -594,41 +629,32 @@
                 width: 100px;
             }
 
-            .cta-buttons {
+            .project-header {
                 flex-direction: column;
             }
-        }
 
-        /* Scroll Animation */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s, transform 0.6s;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
+            .project-date {
+                align-self: flex-start;
+            }
         }
     </style>
 </head>
 <body>
-    <nav>
+    <nav id="navbar">
         <div class="container">
             <a href="#" class="logo">FY</a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#about">Hakkımda</a></li>
                 <li><a href="#experience">Deneyim</a></li>
                 <li><a href="#projects">Projeler</a></li>
                 <li><a href="#education">Eğitim</a></li>
                 <li><a href="#contact">İletişim</a></li>
             </ul>
-            <button class="mobile-menu-btn">☰</button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
         </div>
     </nav>
 
     <main class="container">
-        <!-- Hero Section -->
         <section class="hero">
             <div class="hero-content fade-in">
                 <h1>Merhaba, ben</h1>
@@ -641,12 +667,11 @@
                 </p>
                 <div class="cta-buttons">
                     <a href="#contact" class="btn btn-solid">İletişime Geç</a>
-                    <a href="https://github.com/yourusername" class="btn" target="_blank">GitHub Profili</a>
+                    <a href="https://github.com/firatyurdakul" class="btn" target="_blank">GitHub Profili</a>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about">
             <h2 class="section-title">Hakkımda</h2>
             <div class="about-content fade-in">
@@ -678,12 +703,11 @@
                     </div>
                 </div>
                 <div class="about-image">
-                    <img src="https://via.placeholder.com/400x500/0a192f/64ffda?text=Fırat+Yurdakul" alt="Fırat Yurdakul">
+                    <img src="https://via.placeholder.com/400x500/172a45/64ffda?text=Fırat+Yurdakul" alt="Fırat Yurdakul">
                 </div>
             </div>
         </section>
 
-        <!-- Experience Section -->
         <section id="experience">
             <h2 class="section-title">Deneyim</h2>
             <div class="experience-container fade-in">
@@ -718,7 +742,6 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects">
             <h2 class="section-title">Projeler</h2>
             <div class="projects-grid">
@@ -825,7 +848,6 @@
             </div>
         </section>
 
-        <!-- Education Section -->
         <section id="education">
             <h2 class="section-title">Eğitim</h2>
             <div class="education-grid fade-in">
@@ -850,7 +872,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact">
             <div class="contact-content fade-in">
                 <h2>İletişime Geçelim</h2>
@@ -861,8 +882,8 @@
                 <a href="mailto:fy.firatyurdakul@gmail.com" class="btn btn-solid">E-posta Gönder</a>
                 <div class="contact-links">
                     <a href="mailto:fy.firatyurdakul@gmail.com" class="contact-link" title="Email">📧</a>
-                    <a href="https://github.com/yourusername" class="contact-link" target="_blank" title="GitHub">💻</a>
-                    <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank" title="LinkedIn">💼</a>
+                    <a href="https://github.com/firatyurdakul" class="contact-link" target="_blank" title="GitHub">💻</a>
+                    <a href="https://linkedin.com/in/firatyurdakul" class="contact-link" target="_blank" title="LinkedIn">💼</a>
                     <a href="tel:+905309572300" class="contact-link" title="Phone">📱</a>
                 </div>
             </div>
@@ -879,13 +900,13 @@
         const experiencePanels = document.querySelectorAll('.experience-panel');
 
         tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const targetTab = button.dataset.tab;
+            button.addEventListener('click', function() {
+                const targetTab = this.getAttribute('data-tab');
                 
                 tabButtons.forEach(btn => btn.classList.remove('active'));
                 experiencePanels.forEach(panel => panel.classList.remove('active'));
                 
-                button.classList.add('active');
+                this.classList.add('active');
                 document.getElementById(targetTab).classList.add('active');
             });
         });
@@ -894,11 +915,17 @@
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const target = document.querySelector(targetId);
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const navHeight = document.querySelector('nav').offsetHeight;
+                    const targetPosition = target.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             });
@@ -907,10 +934,10 @@
         // Intersection Observer for fade-in animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
-        const observer = new IntersectionObserver((entries) => {
+        const observer = new IntersectionObserver(function(entries) {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -923,21 +950,41 @@
         });
 
         // Navbar background on scroll
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.style.boxShadow = '0 10px 30px -10px rgba(2, 12, 27, 0.7)';
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
             } else {
-                nav.style.boxShadow = 'none';
+                navbar.classList.remove('scrolled');
             }
         });
 
-        // Mobile menu toggle (can be expanded)
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navLinks = document.querySelector('.nav-links');
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
         
-        mobileMenuBtn.addEventListener('click', () => {
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        mobileMenuBtn.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            this.textContent = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.textContent = '☰';
+            });
+        });
+
+        // Initial animation trigger
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.fade-in').forEach((el, index) => {
+                if (el.getBoundingClientRect().top < window.innerHeight) {
+                    setTimeout(() => {
+                        el.classList.add('visible');
+                    }, index * 100);
+                }
+            });
         });
     </script>
 </body>
