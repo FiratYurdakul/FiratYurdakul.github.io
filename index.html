@@ -3,62 +3,942 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fırat Yurdakul | Software Engineer</title>
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="css/style.css">
+    <title>Fırat Yurdakul - Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0a192f;
+            --secondary: #172a45;
+            --accent: #64ffda;
+            --text: #8892b0;
+            --text-light: #ccd6f6;
+            --white: #e6f1ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--primary);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 25, 47, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 0;
+            box-shadow: 0 10px 30px -10px rgba(2, 12, 27, 0.7);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 100px;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 16px;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .hero h2 {
+            font-size: 72px;
+            color: var(--white);
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .hero h3 {
+            font-size: 60px;
+            color: var(--text);
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 600px;
+            margin-bottom: 50px;
+            color: var(--text);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: 2px solid var(--accent);
+            background: transparent;
+            color: var(--accent);
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .btn-solid {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .btn-solid:hover {
+            background: transparent;
+            color: var(--accent);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 32px;
+            color: var(--white);
+            margin-bottom: 50px;
+        }
+
+        .section-title::before {
+            content: '0' counter(section) '.';
+            counter-increment: section;
+            margin-right: 10px;
+            color: var(--accent);
+            font-size: 24px;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 300px;
+            height: 1px;
+            margin-left: 20px;
+            background: var(--secondary);
+        }
+
+        /* About Section */
+        #about {
+            counter-reset: section;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill-item {
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        .skill-item::before {
+            content: '▹';
+            color: var(--accent);
+            margin-right: 10px;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            z-index: -1;
+            transition: all 0.3s;
+        }
+
+        .about-image:hover::before {
+            top: 10px;
+            left: 10px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 4px;
+            filter: grayscale(100%) contrast(1);
+            transition: filter 0.3s;
+        }
+
+        .about-image:hover img {
+            filter: grayscale(0%) contrast(1);
+        }
+
+        /* Experience Section */
+        .experience-container {
+            display: flex;
+            gap: 30px;
+        }
+
+        .experience-tabs {
+            display: flex;
+            flex-direction: column;
+            border-left: 2px solid var(--secondary);
+        }
+
+        .tab-button {
+            background: transparent;
+            border: none;
+            color: var(--text);
+            padding: 15px 20px;
+            text-align: left;
+            cursor: pointer;
+            border-left: 2px solid transparent;
+            margin-left: -2px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .tab-button:hover,
+        .tab-button.active {
+            color: var(--accent);
+            background: rgba(100, 255, 218, 0.1);
+            border-left-color: var(--accent);
+        }
+
+        .experience-content {
+            flex: 1;
+        }
+
+        .experience-panel {
+            display: none;
+        }
+
+        .experience-panel.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .experience-panel h3 {
+            color: var(--white);
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .experience-panel .company {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .experience-panel .date {
+            color: var(--text);
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .experience-panel ul {
+            list-style: none;
+        }
+
+        .experience-panel li {
+            color: var(--text);
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .experience-panel li::before {
+            content: '▹';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--secondary);
+            padding: 30px;
+            border-radius: 4px;
+            transition: transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--accent);
+            transform: scaleX(0);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .project-card h3 {
+            color: var(--white);
+            font-size: 24px;
+        }
+
+        .project-date {
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        .project-card p {
+            color: var(--text);
+            margin-bottom: 15px;
+        }
+
+        .project-card ul {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+
+        .project-card li {
+            color: var(--text);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .project-card li::before {
+            content: '▹';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            color: var(--accent);
+            font-size: 12px;
+            padding: 5px 10px;
+            border: 1px solid var(--accent);
+            border-radius: 3px;
+        }
+
+        /* Education Section */
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .education-card {
+            background: var(--secondary);
+            padding: 30px;
+            border-radius: 4px;
+            border-left: 4px solid var(--accent);
+            transition: transform 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateX(5px);
+        }
+
+        .education-card h3 {
+            color: var(--white);
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .education-card .degree {
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .education-card .location {
+            color: var(--text);
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .education-card ul {
+            list-style: none;
+        }
+
+        .education-card li {
+            color: var(--text);
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 14px;
+        }
+
+        .education-card li::before {
+            content: '▹';
+            color: var(--accent);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Contact Section */
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-content h2 {
+            font-size: 48px;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .contact-content p {
+            color: var(--text);
+            margin-bottom: 50px;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .contact-link {
+            color: var(--text-light);
+            font-size: 24px;
+            transition: all 0.3s;
+        }
+
+        .contact-link:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: var(--text);
+            font-size: 14px;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: transparent;
+            border: none;
+            color: var(--accent);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 48px;
+            }
+
+            .hero h3 {
+                font-size: 40px;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .experience-container {
+                flex-direction: column;
+            }
+
+            .experience-tabs {
+                flex-direction: row;
+                border-left: none;
+                border-bottom: 2px solid var(--secondary);
+                overflow-x: auto;
+            }
+
+            .tab-button {
+                border-left: none;
+                border-bottom: 2px solid transparent;
+                margin-left: 0;
+                margin-bottom: -2px;
+                white-space: nowrap;
+            }
+
+            .section-title::after {
+                width: 100px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll Animation */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-
-    <div id="particles-js"></div>
-
     <nav>
-        <div class="logo">FY.</div>
-        <div class="nav-links">
-            <a href="#about">ACADEMIC</a>
-            <a href="#work">PROJECTS</a>
-            <a href="mailto:fy.firatyurdakul@gmail.com">HIRE ME</a>
+        <div class="container">
+            <a href="#" class="logo">FY</a>
+            <ul class="nav-links">
+                <li><a href="#about">Hakkımda</a></li>
+                <li><a href="#experience">Deneyim</a></li>
+                <li><a href="#projects">Projeler</a></li>
+                <li><a href="#education">Eğitim</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
         </div>
     </nav>
 
-    <div class="container">
-        <header>
-            <h1 class="hero-title">FIRAT<br>YURDAKUL</h1>
-            <p class="hero-subtitle">Engineering the future of digital experiences at Sabancı University.</p>
-        </header>
-
-        <section id="about">
-            <span class="section-title">Academic Background</span>
-            <div class="grid">
-                <div class="card">
-                    <span class="date">2021 — 2025</span>
-                    <h3>Sabancı University</h3>
-                    <p>Computer Science & Engineering graduate. Focus on ML & Software Architecture.</p>
-                    <div class="tags"><span class="tag">Istanbul</span></div>
-                </div>
-                <div class="card">
-                    <span class="date">2024</span>
-                    <h3>Maribor Uni</h3>
-                    <p>Erasmus Exchange. Mastering Database Systems & Web Technologies.</p>
-                    <div class="tags"><span class="tag">Slovenia</span></div>
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content fade-in">
+                <h1>Merhaba, ben</h1>
+                <h2>Fırat Yurdakul</h2>
+                <h3>Yazılım geliştiriyorum.</h3>
+                <p>
+                    Sabancı Üniversitesi Bilgisayar Bilimi ve Mühendisliği mezunu, modern web ve mobil uygulamalar 
+                    geliştiren bir yazılım mühendisiyim. Machine learning, full-stack development ve mobil uygulama 
+                    geliştirme alanlarında deneyime sahibim.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#contact" class="btn btn-solid">İletişime Geç</a>
+                    <a href="https://github.com/yourusername" class="btn" target="_blank">GitHub Profili</a>
                 </div>
             </div>
         </section>
 
-        <footer>
-            <h2 class="cta-text">Building things?</h2>
-            <div class="footer-links">
-                <a href="#" class="social-link">LinkedIn</a>
-                <a href="#" class="social-link">GitHub</a>
-                <a href="mailto:fy.firatyurdakul@gmail.com" class="social-link">Email</a>
+        <!-- About Section -->
+        <section id="about">
+            <h2 class="section-title">Hakkımda</h2>
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <p>
+                        Merhaba! Ben Fırat, yazılım geliştirme tutkusuyla dolu bir mühendisim. Sabancı Üniversitesi'nde 
+                        Bilgisayar Bilimi ve Mühendisliği eğitimi aldım ve Türkiye Üniversite Sınavı'nda 2.5 milyon öğrenci 
+                        arasında 3812. sırada yer aldım.
+                    </p>
+                    <p>
+                        Erasmus programı kapsamında Slovenya Maribor Üniversitesi'nde eğitim alma fırsatı buldum ve 
+                        uluslararası deneyim kazandım. Web teknolojileri, veritabanı yönetimi ve nesne yönelimli 
+                        programlama konularında uzmanlaştım.
+                    </p>
+                    <p>
+                        Günümüzde Flutter ile mobil uygulamalar, React ile web uygulamaları geliştiriyor ve makine 
+                        öğrenmesi projeleri üzerinde çalışıyorum. Temiz kod yazmayı, kullanıcı deneyimini ön planda 
+                        tutmayı ve sürekli öğrenmeyi seviyorum.
+                    </p>
+                    <div class="skills-grid">
+                        <div class="skill-item">Java & Python</div>
+                        <div class="skill-item">Flutter & React</div>
+                        <div class="skill-item">C++ & C#</div>
+                        <div class="skill-item">MongoDB & MySQL</div>
+                        <div class="skill-item">Firebase & GCP</div>
+                        <div class="skill-item">Machine Learning</div>
+                        <div class="skill-item">Git & DevOps</div>
+                        <div class="skill-item">.NET & Android Studio</div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="https://via.placeholder.com/400x500/0a192f/64ffda?text=Fırat+Yurdakul" alt="Fırat Yurdakul">
+                </div>
             </div>
-            <p class="copyright">© 2025 FIRAT YURDAKUL.</p>
-        </footer>
-    </div>
+        </section>
 
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="js/script.js"></script>
+        <!-- Experience Section -->
+        <section id="experience">
+            <h2 class="section-title">Deneyim</h2>
+            <div class="experience-container fade-in">
+                <div class="experience-tabs">
+                    <button class="tab-button active" data-tab="commencis">Commencis</button>
+                    <button class="tab-button" data-tab="konfides">Konfides</button>
+                </div>
+                <div class="experience-content">
+                    <div class="experience-panel active" id="commencis">
+                        <h3>Test Camp Katılımcısı</h3>
+                        <p class="company">Commencis</p>
+                        <p class="date">Nisan 2025 - Haziran 2025 | İstanbul, Türkiye</p>
+                        <ul>
+                            <li>QA profesyonelleri rehberliğinde yazılım test süreçleri üzerine kapsamlı online eğitim programını tamamladım.</li>
+                            <li>Test temelleri, statik analiz ve test teknikleri (black-box & white-box) konularında uzmanlaştım.</li>
+                            <li>Test yönetim araçları, otomasyon frameworkleri ve CI/CD entegrasyonu üzerine pratik deneyim kazandım.</li>
+                            <li>Performans ve güvenlik testlerinin temellerini öğrendim.</li>
+                            <li>SDLC'yi yazılım geliştirme yol haritası olarak keşfettim ve Agile/Scrum metodolojilerini uygulamalı olarak deneyimledim.</li>
+                        </ul>
+                    </div>
+                    <div class="experience-panel" id="konfides">
+                        <h3>Yazılım Mühendisi Stajyeri</h3>
+                        <p class="company">Konfides Bilgi Teknojileri</p>
+                        <p class="date">Temmuz 2024 - Eylül 2024 | İstanbul, Türkiye</p>
+                        <ul>
+                            <li>Tokenflex'in Softpost uygulamasının front-end'ini Visual Studio Code içinde Flutter kullanarak eğitim projesi olarak yeniden oluşturdum.</li>
+                            <li>Flutter ve Dart konusundaki yetkinliğimi artırmak için gerçek dünya uygulamasını sıfırdan replika ettim.</li>
+                            <li>Kullanıcı arayüzü (UI) tasarımı, UI bileşenlerinin entegrasyonu ve temel navigasyon ve yönlendirme implementasyonu üzerine odaklandım.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Projeler</h2>
+            <div class="projects-grid">
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Machine Learning - Influencer Sınıflandırma</h3>
+                        <span class="project-date">Ekim 2025 - Ocak 2025</span>
+                    </div>
+                    <p>CS 412 dersi kapsamında sosyal medya verilerinden influencer'ları sınıflandıran ve engagement tahmin eden makine öğrenmesi pipeline'ı geliştirdim.</p>
+                    <ul>
+                        <li>TF-IDF, Naive Bayes ve zaman ağırlıklı regresyon kullanarak tahminleme modelleri oluşturdum.</li>
+                        <li>Google Colab üzerinde Pandas, scikit-learn ve NLTK kütüphaneleri ile geliştirme yaptım.</li>
+                        <li>Veri temizleme, özellik çıkarımı ve model optimizasyonu süreçlerini başarıyla uyguladım.</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Machine Learning</span>
+                        <span class="tech-tag">TF-IDF</span>
+                        <span class="tech-tag">Naive Bayes</span>
+                        <span class="tech-tag">NLTK</span>
+                        <span class="tech-tag">Pandas</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>CS310 Mobil Uygulama - Event Paylaşım Platformu</h3>
+                        <span class="project-date">Mart 2025 - Haziran 2025</span>
+                    </div>
+                    <p>Kimliği doğrulanmış kullanıcıların etkinlik oluşturup paylaşabildiği, tüm kullanıcılara görünür Flutter tabanlı mobil uygulama geliştirdim.</p>
+                    <ul>
+                        <li>Flutter ile uygulamanın UI ve front-end bileşenlerini tasarlayıp geliştirdim, akıcı ve kullanıcı dostu deneyim sağladım.</li>
+                        <li>Firebase Authentication ile güvenli kayıt, giriş ve çıkış fonksiyonlarını implement ettim.</li>
+                        <li>Cloud Firestore entegrasyonu ile etkinlikleri saklayıp yönettim, CRUD operasyonlarını gerçek zamanlı güncellemelerle destekledim.</li>
+                        <li>Provider/BLoC/Riverpod kullanarak yapılandırılmış state management uyguladım, kimlik doğrulama, etkinlik verileri ve reaktif UI güncellemelerini yönettim.</li>
+                        <li>Ekip çalışması ile sezgisel tasarım ve gerçek zamanlı bulut özelliklerini birleştiren tam işlevsel mobil uygulama teslim ettim.</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Flutter</span>
+                        <span class="tech-tag">Dart</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Cloud Firestore</span>
+                        <span class="tech-tag">State Management</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Network Applications Development</h3>
+                        <span class="project-date">Ekim 2023 - Ocak 2024</span>
+                    </div>
+                    <p>.NET ve C# kullanarak verimli ve güvenilir network uygulamaları geliştirdiğim liderlik projesi.</p>
+                    <ul>
+                        <li>Socket programlama ve uygulama katmanı protokol tasarımı ile iletişim kuran server ve client taraflı uygulamalar oluşturdum.</li>
+                        <li>TCP/IP protokolleri üzerinde çalışarak güvenilir veri iletişimi sağladım.</li>
+                        <li>Çoklu istemci bağlantılarını asenkron programlama ile yönettim.</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">.NET</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Socket Programming</span>
+                        <span class="tech-tag">TCP/IP</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>Full-Stack Quiz Uygulaması</h3>
+                        <span class="project-date">Mart 2024 - Mayıs 2024</span>
+                    </div>
+                    <p>MERN stack kullanarak dinamik soru alımı için Open Trivia API entegre edilmiş full-stack quiz uygulaması geliştirdim.</p>
+                    <ul>
+                        <li>Node.js, Express ve MongoDB ile backend özelliklerini implement ettim, kullanıcı kimlik doğrulama ve oturum yönetimini sağladım.</li>
+                        <li>React ile dinamik quiz arayüzü geliştirdim, kullanıcı yanıtlarına ve yanıt süresine göre gerçek zamanlı skor hesaplaması ekledim.</li>
+                        <li>RESTful API tasarımı ve CRUD operasyonları üzerine çalıştım.</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">MongoDB</span>
+                        <span class="tech-tag">Express</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">REST API</span>
+                    </div>
+                </div>
+
+                <div class="project-card fade-in">
+                    <div class="project-header">
+                        <h3>2D Platformer Oyun</h3>
+                        <span class="project-date">Kasım 2025</span>
+                    </div>
+                    <p>Unity ile hareket, zıplama, çarpışma yönetimi ve temel düşman AI'ı gibi temel mekaniklere sahip 2D platformer oyun geliştirdim.</p>
+                    <ul>
+                        <li>C# ile karakter kontrol mantığı, fizik tabanlı hareket, animasyon geçişleri ve basit düşman davranışları implement ettim.</li>
+                        <li>Unity'nin Tilemap sistemi kullanarak seviyeler tasarladım ve temel UI elemanları (ana menü, can barı, skor sistemi) oluşturdum.</li>
+                        <li>Projeyi sürdürülebilirlik ve ölçeklenebilirlik sağlamak için temiz, bileşen tabanlı mimari kullanarak yapılandırdım.</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tech-tag">Unity</span>
+                        <span class="tech-tag">C#</span>
+                        <span class="tech-tag">Game Development</span>
+                        <span class="tech-tag">2D Graphics</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education">
+            <h2 class="section-title">Eğitim</h2>
+            <div class="education-grid fade-in">
+                <div class="education-card">
+                    <h3>Sabancı Üniversitesi</h3>
+                    <p class="degree">Bilgisayar Bilimi ve Mühendisliği Lisans</p>
+                    <p class="location">İstanbul, Türkiye | Mezuniyet: Yaz 2025</p>
+                    <ul>
+                        <li>Türkiye Üniversite Giriş Sınavı'nda 2.5 milyon öğrenci arasında 3812. sırada yer aldım</li>
+                        <li><strong>İlgili Dersler:</strong> İleri Programlama, Algoritmalar, Veri Bilimine Giriş, Makine Öğrenmesi, Yazılım Mühendisliği, İstatistiksel Modelleme, Ayrık Matematik, Arayüz Tasarımı, Biçimsel Diller ve Otomata Teorisi, Bilgisayar Ağları</li>
+                    </ul>
+                </div>
+                <div class="education-card">
+                    <h3>Maribor Üniversitesi</h3>
+                    <p class="degree">Erasmus Değişim Programı</p>
+                    <p class="location">Maribor, Slovenya | Şubat 2024 - Haziran 2024</p>
+                    <ul>
+                        <li><strong>Dersler:</strong> Veritabanları, Web Programlama, Temel Web Teknolojileri, Java'da Nesne Yönelimli Programlama</li>
+                        <li>Uluslararası akademik deneyim ve kültürler arası işbirliği</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="contact-content fade-in">
+                <h2>İletişime Geçelim</h2>
+                <p>
+                    Yeni projelere, işbirliği fırsatlarına veya sadece merhaba demek için her zaman açığım. 
+                    Benimle iletişime geçmekten çekinmeyin!
+                </p>
+                <a href="mailto:fy.firatyurdakul@gmail.com" class="btn btn-solid">E-posta Gönder</a>
+                <div class="contact-links">
+                    <a href="mailto:fy.firatyurdakul@gmail.com" class="contact-link" title="Email">📧</a>
+                    <a href="https://github.com/yourusername" class="contact-link" target="_blank" title="GitHub">💻</a>
+                    <a href="https://linkedin.com/in/yourprofile" class="contact-link" target="_blank" title="LinkedIn">💼</a>
+                    <a href="tel:+905309572300" class="contact-link" title="Phone">📱</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Fırat Yurdakul tarafından tasarlanıp geliştirildi © 2025</p>
+    </footer>
+
+    <script>
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const experiencePanels = document.querySelectorAll('.experience-panel');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const targetTab = button.dataset.tab;
+                
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                experiencePanels.forEach(panel => panel.classList.remove('active'));
+                
+                button.classList.add('active');
+                document.getElementById(targetTab).classList.add('active');
+            });
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.boxShadow = '0 10px 30px -10px rgba(2, 12, 27, 0.7)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Mobile menu toggle (can be expanded)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
 </body>
 </html>
