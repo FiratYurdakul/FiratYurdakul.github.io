@@ -72,6 +72,12 @@
             transform: scale(1.05);
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
         .nav-links {
             display: flex;
             gap: 30px;
@@ -104,6 +110,26 @@
 
         .nav-links a:hover::after {
             width: 100%;
+        }
+
+        .language-toggle {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .language-toggle:hover {
+            background: rgba(100, 255, 218, 0.1);
+            transform: translateY(-2px);
         }
 
         .mobile-menu-btn {
@@ -577,6 +603,10 @@
         }
 
         @media (max-width: 768px) {
+            .nav-right {
+                gap: 15px;
+            }
+
             .nav-links {
                 position: fixed;
                 top: 70px;
@@ -643,53 +673,54 @@
     <nav id="navbar">
         <div class="container">
             <a href="#" class="logo">FY</a>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#about">Hakkımda</a></li>
-                <li><a href="#experience">Deneyim</a></li>
-                <li><a href="#projects">Projeler</a></li>
-                <li><a href="#education">Eğitim</a></li>
-                <li><a href="#contact">İletişim</a></li>
-            </ul>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            <div class="nav-right">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#about" data-tr="Hakkımda" data-en="About">Hakkımda</a></li>
+                    <li><a href="#experience" data-tr="Deneyim" data-en="Experience">Deneyim</a></li>
+                    <li><a href="#projects" data-tr="Projeler" data-en="Projects">Projeler</a></li>
+                    <li><a href="#education" data-tr="Eğitim" data-en="Education">Eğitim</a></li>
+                    <li><a href="#contact" data-tr="İletişim" data-en="Contact">İletişim</a></li>
+                </ul>
+                <button class="language-toggle" id="languageToggle">
+                    <span>🌐</span>
+                    <span id="langText">EN</span>
+                </button>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+            </div>
         </div>
     </nav>
 
     <main class="container">
         <section class="hero">
             <div class="hero-content fade-in">
-                <h1>Merhaba, ben</h1>
+                <h1 data-tr="Merhaba, ben" data-en="Hi, I'm">Merhaba, ben</h1>
                 <h2>Fırat Yurdakul</h2>
-                <h3>Yazılım geliştiriyorum.</h3>
-                <p>
-                    Sabancı Üniversitesi Bilgisayar Bilimi ve Mühendisliği mezunu, modern web ve mobil uygulamalar 
-                    geliştiren bir yazılım mühendisiyim. Machine learning, full-stack development ve mobil uygulama 
-                    geliştirme alanlarında deneyime sahibim.
+                <p data-tr="Sabancı Üniversitesi Bilgisayar Bilimi ve Mühendisliği mezunu, modern web ve mobil uygulamalar geliştiren bir yazılım mühendisiyim. Machine learning, full-stack development ve mobil uygulama geliştirme alanlarında deneyime sahibim." 
+                   data-en="A Computer Science and Engineering graduate from Sabancı University, I'm a software engineer developing modern web and mobile applications. I have experience in machine learning, full-stack development, and mobile app development.">
+                    Sabancı Üniversitesi Bilgisayar Bilimi ve Mühendisliği mezunu, modern web ve mobil uygulamalar geliştiren bir yazılım mühendisiyim. Machine learning, full-stack development ve mobil uygulama geliştirme alanlarında deneyime sahibim.
                 </p>
                 <div class="cta-buttons">
-                    <a href="#contact" class="btn btn-solid">İletişime Geç</a>
-                    <a href="https://github.com/FiratYurdakul" class="btn" target="_blank">GitHub Profili</a>
+                    <a href="#contact" class="btn btn-solid" data-tr="İletişime Geç" data-en="Get In Touch">İletişime Geç</a>
+                    <a href="https://github.com/FiratYurdakul" class="btn" target="_blank" data-tr="GitHub Profili" data-en="GitHub Profile">GitHub Profili</a>
                 </div>
             </div>
         </section>
 
         <section id="about">
-            <h2 class="section-title">Hakkımda</h2>
+            <h2 class="section-title" data-tr="Hakkımda" data-en="About Me">Hakkımda</h2>
             <div class="about-content fade-in">
                 <div class="about-text">
-                    <p>
-                        Merhaba! Ben Fırat, yazılım geliştirme tutkusuyla dolu bir mühendisim. Sabancı Üniversitesi'nde 
-                        Bilgisayar Bilimi ve Mühendisliği eğitimi aldım ve Türkiye Üniversite Sınavı'nda 2.5 milyon öğrenci 
-                        arasında 3812. sırada yer aldım.
+                    <p data-tr="Merhaba! Ben Fırat, yazılım geliştirme tutkusuyla dolu bir mühendisim. Sabancı Üniversitesi'nde Bilgisayar Bilimi ve Mühendisliği eğitimi aldım ve Türkiye Üniversite Sınavı'nda 2.5 milyon öğrenci arasında 3812. sırada yer aldım."
+                       data-en="Hello! I'm Fırat, an engineer passionate about software development. I studied Computer Science and Engineering at Sabancı University and ranked 3812th among 2.5 million students in the Turkish University Entrance Exam.">
+                        Merhaba! Ben Fırat, yazılım geliştirme tutkusuyla dolu bir mühendisim. Sabancı Üniversitesi'nde Bilgisayar Bilimi ve Mühendisliği eğitimi aldım ve Türkiye Üniversite Sınavı'nda 2.5 milyon öğrenci arasında 3812. sırada yer aldım.
                     </p>
-                    <p>
-                        Erasmus programı kapsamında Slovenya Maribor Üniversitesi'nde eğitim alma fırsatı buldum ve 
-                        uluslararası deneyim kazandım. Web teknolojileri, veritabanı yönetimi ve nesne yönelimli 
-                        programlama konularında uzmanlaştım.
+                    <p data-tr="Erasmus programı kapsamında Slovenya Maribor Üniversitesi'nde eğitim alma fırsatı buldum ve uluslararası deneyim kazandım. Web teknolojileri, veritabanı yönetimi ve nesne yönelimli programlama konularında uzmanlaştım."
+                       data-en="I had the opportunity to study at the University of Maribor in Slovenia through the Erasmus program and gained international experience. I specialized in web technologies, database management, and object-oriented programming.">
+                        Erasmus programı kapsamında Slovenya Maribor Üniversitesi'nde eğitim alma fırsatı buldum ve uluslararası deneyim kazandım. Web teknolojileri, veritabanı yönetimi ve nesne yönelimli programlama konularında uzmanlaştım.
                     </p>
-                    <p>
-                        Günümüzde Flutter ile mobil uygulamalar, React ile web uygulamaları geliştiriyor ve makine 
-                        öğrenmesi projeleri üzerinde çalışıyorum. Temiz kod yazmayı, kullanıcı deneyimini ön planda 
-                        tutmayı ve sürekli öğrenmeyi seviyorum.
+                    <p data-tr="Günümüzde Flutter ile mobil uygulamalar, React ile web uygulamaları geliştiriyor ve makine öğrenmesi projeleri üzerinde çalışıyorum. Temiz kod yazmayı, kullanıcı deneyimini ön planda tutmayı ve sürekli öğrenmeyi seviyorum."
+                       data-en="Currently, I develop mobile applications with Flutter, web applications with React, and work on machine learning projects. I love writing clean code, prioritizing user experience, and continuous learning.">
+                        Günümüzde Flutter ile mobil uygulamalar, React ile web uygulamaları geliştiriyor ve makine öğrenmesi projeleri üzerinde çalışıyorum. Temiz kod yazmayı, kullanıcı deneyimini ön planda tutmayı ve sürekli öğrenmeyi seviyorum.
                     </p>
                     <div class="skills-grid">
                         <div class="skill-item">Java & Python</div>
@@ -709,7 +740,7 @@
         </section>
 
         <section id="experience">
-            <h2 class="section-title">Deneyim</h2>
+            <h2 class="section-title" data-tr="Deneyim" data-en="Experience">Deneyim</h2>
             <div class="experience-container fade-in">
                 <div class="experience-tabs">
                     <button class="tab-button active" data-tab="commencis">Commencis</button>
@@ -717,25 +748,49 @@
                 </div>
                 <div class="experience-content">
                     <div class="experience-panel active" id="commencis">
-                        <h3>Test Camp Katılımcısı</h3>
+                        <h3 data-tr="Test Camp Katılımcısı" data-en="Test Camp Participant">Test Camp Katılımcısı</h3>
                         <p class="company">Commencis</p>
-                        <p class="date">Nisan 2025 - Haziran 2025 | İstanbul, Türkiye</p>
+                        <p class="date" data-tr="Nisan 2025 - Haziran 2025 | İstanbul, Türkiye" data-en="April 2025 - June 2025 | Istanbul, Turkey">Nisan 2025 - Haziran 2025 | İstanbul, Türkiye</p>
                         <ul>
-                            <li>QA profesyonelleri rehberliğinde yazılım test süreçleri üzerine kapsamlı online eğitim programını tamamladım.</li>
-                            <li>Test temelleri, statik analiz ve test teknikleri (black-box & white-box) konularında uzmanlaştım.</li>
-                            <li>Test yönetim araçları, otomasyon frameworkleri ve CI/CD entegrasyonu üzerine pratik deneyim kazandım.</li>
-                            <li>Performans ve güvenlik testlerinin temellerini öğrendim.</li>
-                            <li>SDLC'yi yazılım geliştirme yol haritası olarak keşfettim ve Agile/Scrum metodolojilerini uygulamalı olarak deneyimledim.</li>
+                            <li data-tr="QA profesyonelleri rehberliğinde yazılım test süreçleri üzerine kapsamlı online eğitim programını tamamladım."
+                                data-en="Completed comprehensive online training program on software testing processes under the guidance of QA professionals.">
+                                QA profesyonelleri rehberliğinde yazılım test süreçleri üzerine kapsamlı online eğitim programını tamamladım.
+                            </li>
+                            <li data-tr="Test temelleri, statik analiz ve test teknikleri (black-box & white-box) konularında uzmanlaştım."
+                                data-en="Specialized in test fundamentals, static analysis, and testing techniques (black-box & white-box).">
+                                Test temelleri, statik analiz ve test teknikleri (black-box & white-box) konularında uzmanlaştım.
+                            </li>
+                            <li data-tr="Test yönetim araçları, otomasyon frameworkleri ve CI/CD entegrasyonu üzerine pratik deneyim kazandım."
+                                data-en="Gained practical experience in test management tools, automation frameworks, and CI/CD integration.">
+                                Test yönetim araçları, otomasyon frameworkleri ve CI/CD entegrasyonu üzerine pratik deneyim kazandım.
+                            </li>
+                            <li data-tr="Performans ve güvenlik testlerinin temellerini öğrendim."
+                                data-en="Learned the fundamentals of performance and security testing.">
+                                Performans ve güvenlik testlerinin temellerini öğrendim.
+                            </li>
+                            <li data-tr="SDLC'yi yazılım geliştirme yol haritası olarak keşfettim ve Agile/Scrum metodolojilerini uygulamalı olarak deneyimledim."
+                                data-en="Explored SDLC as a software development roadmap and experienced Agile/Scrum methodologies hands-on.">
+                                SDLC'yi yazılım geliştirme yol haritası olarak keşfettim ve Agile/Scrum metodolojilerini uygulamalı olarak deneyimledim.
+                            </li>
                         </ul>
                     </div>
                     <div class="experience-panel" id="konfides">
-                        <h3>Yazılım Mühendisi Stajyeri</h3>
-                        <p class="company">Konfides Bilgi Teknojileri</p>
-                        <p class="date">Temmuz 2024 - Eylül 2024 | İstanbul, Türkiye</p>
+                        <h3 data-tr="Yazılım Mühendisi Stajyeri" data-en="Software Engineering Intern">Yazılım Mühendisi Stajyeri</h3>
+                        <p class="company" data-tr="Konfides Bilgi Teknolojileri" data-en="Konfides Information Technologies">Konfides Bilgi Teknolojileri</p>
+                        <p class="date" data-tr="Temmuz 2024 - Eylül 2024 | İstanbul, Türkiye" data-en="July 2024 - September 2024 | Istanbul, Turkey">Temmuz 2024 - Eylül 2024 | İstanbul, Türkiye</p>
                         <ul>
-                            <li>Tokenflex'in Softpost uygulamasının front-end'ini Visual Studio Code içinde Flutter kullanarak eğitim projesi olarak yeniden oluşturdum.</li>
-                            <li>Flutter ve Dart konusundaki yetkinliğimi artırmak için gerçek dünya uygulamasını sıfırdan replika ettim.</li>
-                            <li>Kullanıcı arayüzü (UI) tasarımı, UI bileşenlerinin entegrasyonu ve temel navigasyon ve yönlendirme implementasyonu üzerine odaklandım.</li>
+                            <li data-tr="Tokenflex'in Softpost uygulamasının front-end'ini Visual Studio Code içinde Flutter kullanarak eğitim projesi olarak yeniden oluşturdum."
+                                data-en="Recreated Tokenflex's Softpost application front-end as a training project using Flutter in Visual Studio Code.">
+                                Tokenflex'in Softpost uygulamasının front-end'ini Visual Studio Code içinde Flutter kullanarak eğitim projesi olarak yeniden oluşturdum.
+                            </li>
+                            <li data-tr="Flutter ve Dart konusundaki yetkinliğimi artırmak için gerçek dünya uygulamasını sıfırdan replika ettim."
+                                data-en="Replicated a real-world application from scratch to enhance my proficiency in Flutter and Dart.">
+                                Flutter ve Dart konusundaki yetkinliğimi artırmak için gerçek dünya uygulamasını sıfırdan replika ettim.
+                            </li>
+                            <li data-tr="Kullanıcı arayüzü (UI) tasarımı, UI bileşenlerinin entegrasyonu ve temel navigasyon ve yönlendirme implementasyonu üzerine odaklandım."
+                                data-en="Focused on user interface (UI) design, UI component integration, and basic navigation and routing implementation.">
+                                Kullanıcı arayüzü (UI) tasarımı, UI bileşenlerinin entegrasyonu ve temel navigasyon ve yönlendirme implementasyonu üzerine odaklandım.
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -743,18 +798,30 @@
         </section>
 
         <section id="projects">
-            <h2 class="section-title">Projeler</h2>
+            <h2 class="section-title" data-tr="Projeler" data-en="Projects">Projeler</h2>
             <div class="projects-grid">
                 <div class="project-card fade-in">
                     <div class="project-header">
-                        <h3>Machine Learning - Influencer Sınıflandırma</h3>
-                        <span class="project-date">Ekim 2025 - Ocak 2025</span>
+                        <h3 data-tr="Machine Learning - Influencer Sınıflandırma" data-en="Machine Learning - Influencer Classification">Machine Learning - Influencer Sınıflandırma</h3>
+                        <span class="project-date" data-tr="Ekim 2025 - Ocak 2025" data-en="October 2025 - January 2025">Ekim 2025 - Ocak 2025</span>
                     </div>
-                    <p>CS 412 dersi kapsamında sosyal medya verilerinden influencer'ları sınıflandıran ve engagement tahmin eden makine öğrenmesi pipeline'ı geliştirdim.</p>
+                    <p data-tr="CS 412 dersi kapsamında sosyal medya verilerinden influencer'ları sınıflandıran ve engagement tahmin eden makine öğrenmesi pipeline'ı geliştirdim."
+                       data-en="Developed a machine learning pipeline for CS 412 course that classifies influencers from social media data and predicts engagement.">
+                        CS 412 dersi kapsamında sosyal medya verilerinden influencer'ları sınıflandıran ve engagement tahmin eden makine öğrenmesi pipeline'ı geliştirdim.
+                    </p>
                     <ul>
-                        <li>TF-IDF, Naive Bayes ve zaman ağırlıklı regresyon kullanarak tahminleme modelleri oluşturdum.</li>
-                        <li>Google Colab üzerinde Pandas, scikit-learn ve NLTK kütüphaneleri ile geliştirme yaptım.</li>
-                        <li>Veri temizleme, özellik çıkarımı ve model optimizasyonu süreçlerini başarıyla uyguladım.</li>
+                        <li data-tr="TF-IDF, Naive Bayes ve zaman ağırlıklı regresyon kullanarak tahminleme modelleri oluşturdum."
+                            data-en="Created prediction models using TF-IDF, Naive Bayes, and time-weighted regression.">
+                            TF-IDF, Naive Bayes ve zaman ağırlıklı regresyon kullanarak tahminleme modelleri oluşturdum.
+                        </li>
+                        <li data-tr="Google Colab üzerinde Pandas, scikit-learn ve NLTK kütüphaneleri ile geliştirme yaptım."
+                            data-en="Developed on Google Colab using Pandas, scikit-learn, and NLTK libraries.">
+                            Google Colab üzerinde Pandas, scikit-learn ve NLTK kütüphaneleri ile geliştirme yaptım.
+                        </li>
+                        <li data-tr="Veri temizleme, özellik çıkarımı ve model optimizasyonu süreçlerini başarıyla uyguladım."
+                            data-en="Successfully applied data cleaning, feature extraction, and model optimization processes.">
+                            Veri temizleme, özellik çıkarımı ve model optimizasyonu süreçlerini başarıyla uyguladım.
+                        </li>
                     </ul>
                     <div class="project-tech">
                         <span class="tech-tag">Python</span>
@@ -768,16 +835,34 @@
 
                 <div class="project-card fade-in">
                     <div class="project-header">
-                        <h3>CS310 Mobil Uygulama - Event Paylaşım Platformu</h3>
-                        <span class="project-date">Mart 2025 - Haziran 2025</span>
+                        <h3 data-tr="CS310 Mobil Uygulama - Event Paylaşım Platformu" data-en="CS310 Mobile App - Event Sharing Platform">CS310 Mobil Uygulama - Event Paylaşım Platformu</h3>
+                        <span class="project-date" data-tr="Mart 2025 - Haziran 2025" data-en="March 2025 - June 2025">Mart 2025 - Haziran 2025</span>
                     </div>
-                    <p>Kimliği doğrulanmış kullanıcıların etkinlik oluşturup paylaşabildiği, tüm kullanıcılara görünür Flutter tabanlı mobil uygulama geliştirdim.</p>
+                    <p data-tr="Kimliği doğrulanmış kullanıcıların etkinlik oluşturup paylaşabildiği, tüm kullanıcılara görünür Flutter tabanlı mobil uygulama geliştirdim."
+                       data-en="Developed a Flutter-based mobile application where authenticated users can create and share events visible to all users.">
+                        Kimliği doğrulanmış kullanıcıların etkinlik oluşturup paylaşabildiği, tüm kullanıcılara görünür Flutter tabanlı mobil uygulama geliştirdim.
+                    </p>
                     <ul>
-                        <li>Flutter ile uygulamanın UI ve front-end bileşenlerini tasarlayıp geliştirdim, akıcı ve kullanıcı dostu deneyim sağladım.</li>
-                        <li>Firebase Authentication ile güvenli kayıt, giriş ve çıkış fonksiyonlarını implement ettim.</li>
-                        <li>Cloud Firestore entegrasyonu ile etkinlikleri saklayıp yönettim, CRUD operasyonlarını gerçek zamanlı güncellemelerle destekledim.</li>
-                        <li>Provider/BLoC/Riverpod kullanarak yapılandırılmış state management uyguladım, kimlik doğrulama, etkinlik verileri ve reaktif UI güncellemelerini yönettim.</li>
-                        <li>Ekip çalışması ile sezgisel tasarım ve gerçek zamanlı bulut özelliklerini birleştiren tam işlevsel mobil uygulama teslim ettim.</li>
+                        <li data-tr="Flutter ile uygulamanın UI ve front-end bileşenlerini tasarlayıp geliştirdim, akıcı ve kullanıcı dostu deneyim sağladım."
+                            data-en="Designed and developed the app's UI and front-end components with Flutter, providing a smooth and user-friendly experience.">
+                            Flutter ile uygulamanın UI ve front-end bileşenlerini tasarlayıp geliştirdim, akıcı ve kullanıcı dostu deneyim sağladım.
+                        </li>
+                        <li data-tr="Firebase Authentication ile güvenli kayıt, giriş ve çıkış fonksiyonlarını implement ettim."
+                            data-en="Implemented secure registration, login, and logout functions with Firebase Authentication.">
+                            Firebase Authentication ile güvenli kayıt, giriş ve çıkış fonksiyonlarını implement ettim.
+                        </li>
+                        <li data-tr="Cloud Firestore entegrasyonu ile etkinlikleri saklayıp yönettim, CRUD operasyonlarını gerçek zamanlı güncellemelerle destekledim."
+                            data-en="Stored and managed events with Cloud Firestore integration, supporting CRUD operations with real-time updates.">
+                            Cloud Firestore entegrasyonu ile etkinlikleri saklayıp yönettim, CRUD operasyonlarını gerçek zamanlı güncellemelerle destekledim.
+                        </li>
+                        <li data-tr="Provider/BLoC/Riverpod kullanarak yapılandırılmış state management uyguladım, kimlik doğrulama, etkinlik verileri ve reaktif UI güncellemelerini yönettim."
+                            data-en="Applied structured state management using Provider/BLoC/Riverpod, managing authentication, event data, and reactive UI updates.">
+                            Provider/BLoC/Riverpod kullanarak yapılandırılmış state management uyguladım, kimlik doğrulama, etkinlik verileri ve reaktif UI güncellemelerini yönettim.
+                        </li>
+                        <li data-tr="Ekip çalışması ile sezgisel tasarım ve gerçek zamanlı bulut özelliklerini birleştiren tam işlevsel mobil uygulama teslim ettim."
+                            data-en="Delivered a fully functional mobile app combining intuitive design and real-time cloud features through teamwork.">
+                            Ekip çalışması ile sezgisel tasarım ve gerçek zamanlı bulut özelliklerini birleştiren tam işlevsel mobil uygulama teslim ettim.
+                        </li>
                     </ul>
                     <div class="project-tech">
                         <span class="tech-tag">Flutter</span>
@@ -790,14 +875,26 @@
 
                 <div class="project-card fade-in">
                     <div class="project-header">
-                        <h3>Network Applications Development</h3>
-                        <span class="project-date">Ekim 2023 - Ocak 2024</span>
+                        <h3 data-tr="Network Applications Development" data-en="Network Applications Development">Network Applications Development</h3>
+                        <span class="project-date" data-tr="Ekim 2023 - Ocak 2024" data-en="October 2023 - January 2024">Ekim 2023 - Ocak 2024</span>
                     </div>
-                    <p>.NET ve C# kullanarak verimli ve güvenilir network uygulamaları geliştirdiğim liderlik projesi.</p>
+                    <p data-tr=".NET ve C# kullanarak verimli ve güvenilir network uygulamaları geliştirdiğim liderlik projesi."
+                       data-en="Leadership project developing efficient and reliable network applications using .NET and C#.">
+                        .NET ve C# kullanarak verimli ve güvenilir network uygulamaları geliştirdiğim liderlik projesi.
+                    </p>
                     <ul>
-                        <li>Socket programlama ve uygulama katmanı protokol tasarımı ile iletişim kuran server ve client taraflı uygulamalar oluşturdum.</li>
-                        <li>TCP/IP protokolleri üzerinde çalışarak güvenilir veri iletişimi sağladım.</li>
-                        <li>Çoklu istemci bağlantılarını asenkron programlama ile yönettim.</li>
+                        <li data-tr="Socket programlama ve uygulama katmanı protokol tasarımı ile iletişim kuran server ve client taraflı uygulamalar oluşturdum."
+                            data-en="Created server and client-side applications communicating through socket programming and application layer protocol design.">
+                            Socket programlama ve uygulama katmanı protokol tasarımı ile iletişim kuran server ve client taraflı uygulamalar oluşturdum.
+                        </li>
+                        <li data-tr="TCP/IP protokolleri üzerinde çalışarak güvenilir veri iletişimi sağladım."
+                            data-en="Ensured reliable data communication by working with TCP/IP protocols.">
+                            TCP/IP protokolleri üzerinde çalışarak güvenilir veri iletişimi sağladım.
+                        </li>
+                        <li data-tr="Çoklu istemci bağlantılarını asenkron programlama ile yönettim."
+                            data-en="Managed multiple client connections with asynchronous programming.">
+                            Çoklu istemci bağlantılarını asenkron programlama ile yönettim.
+                        </li>
                     </ul>
                     <div class="project-tech">
                         <span class="tech-tag">.NET</span>
@@ -809,14 +906,26 @@
 
                 <div class="project-card fade-in">
                     <div class="project-header">
-                        <h3>Full-Stack Quiz Uygulaması</h3>
-                        <span class="project-date">Mart 2024 - Mayıs 2024</span>
+                        <h3 data-tr="Full-Stack Quiz Uygulaması" data-en="Full-Stack Quiz Application">Full-Stack Quiz Uygulaması</h3>
+                        <span class="project-date" data-tr="Mart 2024 - Mayıs 2024" data-en="March 2024 - May 2024">Mart 2024 - Mayıs 2024</span>
                     </div>
-                    <p>MERN stack kullanarak dinamik soru alımı için Open Trivia API entegre edilmiş full-stack quiz uygulaması geliştirdim.</p>
+                    <p data-tr="MERN stack kullanarak dinamik soru alımı için Open Trivia API entegre edilmiş full-stack quiz uygulaması geliştirdim."
+                       data-en="Developed a full-stack quiz application with MERN stack integrating Open Trivia API for dynamic question retrieval.">
+                        MERN stack kullanarak dinamik soru alımı için Open Trivia API entegre edilmiş full-stack quiz uygulaması geliştirdim.
+                    </p>
                     <ul>
-                        <li>Node.js, Express ve MongoDB ile backend özelliklerini implement ettim, kullanıcı kimlik doğrulama ve oturum yönetimini sağladım.</li>
-                        <li>React ile dinamik quiz arayüzü geliştirdim, kullanıcı yanıtlarına ve yanıt süresine göre gerçek zamanlı skor hesaplaması ekledim.</li>
-                        <li>RESTful API tasarımı ve CRUD operasyonları üzerine çalıştım.</li>
+                        <li data-tr="Node.js, Express ve MongoDB ile backend özelliklerini implement ettim, kullanıcı kimlik doğrulama ve oturum yönetimini sağladım."
+                            data-en="Implemented backend features with Node.js, Express, and MongoDB, providing user authentication and session management.">
+                            Node.js, Express ve MongoDB ile backend özelliklerini implement ettim, kullanıcı kimlik doğrulama ve oturum yönetimini sağladım.
+                        </li>
+                        <li data-tr="React ile dinamik quiz arayüzü geliştirdim, kullanıcı yanıtlarına ve yanıt süresine göre gerçek zamanlı skor hesaplaması ekledim."
+                            data-en="Developed dynamic quiz interface with React, adding real-time score calculation based on user responses and response time.">
+                            React ile dinamik quiz arayüzü geliştirdim, kullanıcı yanıtlarına ve yanıt süresine göre gerçek zamanlı skor hesaplaması ekledim.
+                        </li>
+                        <li data-tr="RESTful API tasarımı ve CRUD operasyonları üzerine çalıştım."
+                            data-en="Worked on RESTful API design and CRUD operations.">
+                            RESTful API tasarımı ve CRUD operasyonları üzerine çalıştım.
+                        </li>
                     </ul>
                     <div class="project-tech">
                         <span class="tech-tag">MongoDB</span>
@@ -829,14 +938,26 @@
 
                 <div class="project-card fade-in">
                     <div class="project-header">
-                        <h3>2D Platformer Oyun</h3>
-                        <span class="project-date">Kasım 2025</span>
+                        <h3 data-tr="2D Platformer Oyun" data-en="2D Platformer Game">2D Platformer Oyun</h3>
+                        <span class="project-date" data-tr="Kasım 2025" data-en="November 2025">Kasım 2025</span>
                     </div>
-                    <p>Unity ile hareket, zıplama, çarpışma yönetimi ve temel düşman AI'ı gibi temel mekaniklere sahip 2D platformer oyun geliştirdim.</p>
+                    <p data-tr="Unity ile hareket, zıplama, çarpışma yönetimi ve temel düşman AI'ı gibi temel mekaniklere sahip 2D platformer oyun geliştirdim."
+                       data-en="Developed a 2D platformer game with Unity featuring core mechanics like movement, jumping, collision management, and basic enemy AI.">
+                        Unity ile hareket, zıplama, çarpışma yönetimi ve temel düşman AI'ı gibi temel mekaniklere sahip 2D platformer oyun geliştirdim.
+                    </p>
                     <ul>
-                        <li>C# ile karakter kontrol mantığı, fizik tabanlı hareket, animasyon geçişleri ve basit düşman davranışları implement ettim.</li>
-                        <li>Unity'nin Tilemap sistemi kullanarak seviyeler tasarladım ve temel UI elemanları (ana menü, can barı, skor sistemi) oluşturdum.</li>
-                        <li>Projeyi sürdürülebilirlik ve ölçeklenebilirlik sağlamak için temiz, bileşen tabanlı mimari kullanarak yapılandırdım.</li>
+                        <li data-tr="C# ile karakter kontrol mantığı, fizik tabanlı hareket, animasyon geçişleri ve basit düşman davranışları implement ettim."
+                            data-en="Implemented character control logic, physics-based movement, animation transitions, and simple enemy behaviors with C#.">
+                            C# ile karakter kontrol mantığı, fizik tabanlı hareket, animasyon geçişleri ve basit düşman davranışları implement ettim.
+                        </li>
+                        <li data-tr="Unity'nin Tilemap sistemi kullanarak seviyeler tasarladım ve temel UI elemanları (ana menü, can barı, skor sistemi) oluşturdum."
+                            data-en="Designed levels using Unity's Tilemap system and created basic UI elements (main menu, health bar, scoring system).">
+                            Unity'nin Tilemap sistemi kullanarak seviyeler tasarladım ve temel UI elemanları (ana menü, can barı, skor sistemi) oluşturdum.
+                        </li>
+                        <li data-tr="Projeyi sürdürülebilirlik ve ölçeklenebilirlik sağlamak için temiz, bileşen tabanlı mimari kullanarak yapılandırdım."
+                            data-en="Structured the project using clean, component-based architecture for sustainability and scalability.">
+                            Projeyi sürdürülebilirlik ve ölçeklenebilirlik sağlamak için temiz, bileşen tabanlı mimari kullanarak yapılandırdım.
+                        </li>
                     </ul>
                     <div class="project-tech">
                         <span class="tech-tag">Unity</span>
@@ -849,24 +970,36 @@
         </section>
 
         <section id="education">
-            <h2 class="section-title">Eğitim</h2>
+            <h2 class="section-title" data-tr="Eğitim" data-en="Education">Eğitim</h2>
             <div class="education-grid fade-in">
                 <div class="education-card">
-                    <h3>Sabancı Üniversitesi</h3>
-                    <p class="degree">Bilgisayar Bilimi ve Mühendisliği Lisans</p>
-                    <p class="location">İstanbul, Türkiye | Mezuniyet: Yaz 2025</p>
+                    <h3 data-tr="Sabancı Üniversitesi" data-en="Sabancı University">Sabancı Üniversitesi</h3>
+                    <p class="degree" data-tr="Bilgisayar Bilimi ve Mühendisliği Lisans" data-en="Bachelor of Computer Science and Engineering">Bilgisayar Bilimi ve Mühendisliği Lisans</p>
+                    <p class="location" data-tr="İstanbul, Türkiye | Mezuniyet: Yaz 2025" data-en="Istanbul, Turkey | Graduation: Summer 2025">İstanbul, Türkiye | Mezuniyet: Yaz 2025</p>
                     <ul>
-                        <li>Türkiye Üniversite Giriş Sınavı'nda 2.5 milyon öğrenci arasında 3812. sırada yer aldım</li>
-                        <li><strong>İlgili Dersler:</strong> İleri Programlama, Algoritmalar, Veri Bilimine Giriş, Makine Öğrenmesi, Yazılım Mühendisliği, İstatistiksel Modelleme, Ayrık Matematik, Arayüz Tasarımı, Biçimsel Diller ve Otomata Teorisi, Bilgisayar Ağları</li>
+                        <li data-tr="Türkiye Üniversite Giriş Sınavı'nda 2.5 milyon öğrenci arasında 3812. sırada yer aldım"
+                            data-en="Ranked 3812th among 2.5 million students in Turkish University Entrance Exam">
+                            Türkiye Üniversite Giriş Sınavı'nda 2.5 milyon öğrenci arasında 3812. sırada yer aldım
+                        </li>
+                        <li data-tr="İlgili Dersler: İleri Programlama, Algoritmalar, Veri Bilimine Giriş, Makine Öğrenmesi, Yazılım Mühendisliği, İstatistiksel Modelleme, Ayrık Matematik, Arayüz Tasarımı, Biçimsel Diller ve Otomata Teorisi, Bilgisayar Ağları"
+                            data-en="Relevant Courses: Advanced Programming, Algorithms, Introduction to Data Science, Machine Learning, Software Engineering, Statistical Modeling, Discrete Mathematics, Interface Design, Formal Languages and Automata Theory, Computer Networks">
+                            <strong data-tr="İlgili Dersler:" data-en="Relevant Courses:">İlgili Dersler:</strong> İleri Programlama, Algoritmalar, Veri Bilimine Giriş, Makine Öğrenmesi, Yazılım Mühendisliği, İstatistiksel Modelleme, Ayrık Matematik, Arayüz Tasarımı, Biçimsel Diller ve Otomata Teorisi, Bilgisayar Ağları
+                        </li>
                     </ul>
                 </div>
                 <div class="education-card">
-                    <h3>Maribor Üniversitesi</h3>
-                    <p class="degree">Erasmus Değişim Programı</p>
-                    <p class="location">Maribor, Slovenya | Şubat 2024 - Haziran 2024</p>
+                    <h3 data-tr="Maribor Üniversitesi" data-en="University of Maribor">Maribor Üniversitesi</h3>
+                    <p class="degree" data-tr="Erasmus Değişim Programı" data-en="Erasmus Exchange Program">Erasmus Değişim Programı</p>
+                    <p class="location" data-tr="Maribor, Slovenya | Şubat 2024 - Haziran 2024" data-en="Maribor, Slovenia | February 2024 - June 2024">Maribor, Slovenya | Şubat 2024 - Haziran 2024</p>
                     <ul>
-                        <li><strong>Dersler:</strong> Veritabanları, Web Programlama, Temel Web Teknolojileri, Java'da Nesne Yönelimli Programlama</li>
-                        <li>Uluslararası akademik deneyim ve kültürler arası işbirliği</li>
+                        <li data-tr="Dersler: Veritabanları, Web Programlama, Temel Web Teknolojileri, Java'da Nesne Yönelimli Programlama"
+                            data-en="Courses: Databases, Web Programming, Fundamental Web Technologies, Object-Oriented Programming in Java">
+                            <strong data-tr="Dersler:" data-en="Courses:">Dersler:</strong> Veritabanları, Web Programlama, Temel Web Teknolojileri, Java'da Nesne Yönelimli Programlama
+                        </li>
+                        <li data-tr="Uluslararası akademik deneyim ve kültürler arası işbirliği"
+                            data-en="International academic experience and cross-cultural collaboration">
+                            Uluslararası akademik deneyim ve kültürler arası işbirliği
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -874,12 +1007,12 @@
 
         <section id="contact">
             <div class="contact-content fade-in">
-                <h2>İletişime Geçelim</h2>
-                <p>
-                    Yeni projelere, işbirliği fırsatlarına veya sadece merhaba demek için her zaman açığım. 
-                    Benimle iletişime geçmekten çekinmeyin!
+                <h2 data-tr="İletişime Geçelim" data-en="Let's Get In Touch">İletişime Geçelim</h2>
+                <p data-tr="Yeni projelere, işbirliği fırsatlarına veya sadece merhaba demek için her zaman açığım. Benimle iletişime geçmekten çekinmeyin!"
+                   data-en="I'm always open to new projects, collaboration opportunities, or just saying hello. Don't hesitate to reach out!">
+                    Yeni projelere, işbirliği fırsatlarına veya sadece merhaba demek için her zaman açığım. Benimle iletişime geçmekten çekinmeyin!
                 </p>
-                <a href="mailto:fy.firatyurdakul@gmail.com" class="btn btn-solid">E-posta Gönder</a>
+                <a href="mailto:fy.firatyurdakul@gmail.com" class="btn btn-solid" data-tr="E-posta Gönder" data-en="Send Email">E-posta Gönder</a>
                 <div class="contact-links">
                     <a href="mailto:fy.firatyurdakul@gmail.com" class="contact-link" title="Email">📧</a>
                     <a href="https://github.com/firatyurdakul" class="contact-link" target="_blank" title="GitHub">💻</a>
@@ -891,10 +1024,69 @@
     </main>
 
     <footer>
-        <p>Fırat Yurdakul tarafından tasarlanıp geliştirildi © 2025</p>
+        <p data-tr="Fırat Yurdakul tarafından tasarlanıp geliştirildi © 2025" data-en="Designed & Built by Fırat Yurdakul © 2025">Fırat Yurdakul tarafından tasarlanıp geliştirildi © 2025</p>
     </footer>
 
     <script>
+        // Language toggle functionality
+        let currentLang = 'tr';
+        const langToggle = document.getElementById('languageToggle');
+        const langText = document.getElementById('langText');
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            langText.textContent = lang === 'tr' ? 'EN' : 'TR';
+            
+            // Update all elements with language attributes
+            document.querySelectorAll('[data-tr]').forEach(element => {
+                const text = element.getAttribute(`data-${lang}`);
+                if (text) {
+                    // Check if element has child nodes that need to be preserved
+                    if (element.children.length > 0) {
+                        // For elements with children, only update text nodes
+                        const walker = document.createTreeWalker(
+                            element,
+                            NodeFilter.SHOW_TEXT,
+                            null,
+                            false
+                        );
+                        let node;
+                        let textContent = '';
+                        while (node = walker.nextNode()) {
+                            textContent += node.textContent;
+                        }
+                        // Only update if the text content matches one of the language versions
+                        if (element.getAttribute('data-tr') === textContent.trim() || 
+                            element.getAttribute('data-en') === textContent.trim()) {
+                            element.childNodes.forEach(child => {
+                                if (child.nodeType === Node.TEXT_NODE) {
+                                    child.textContent = text;
+                                }
+                            });
+                        }
+                    } else {
+                        element.textContent = text;
+                    }
+                }
+            });
+
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Save preference
+            localStorage.setItem('preferredLanguage', lang);
+        }
+
+        langToggle.addEventListener('click', () => {
+            switchLanguage(currentLang === 'tr' ? 'en' : 'tr');
+        });
+
+        // Load saved language preference
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang && savedLang !== 'tr') {
+            switchLanguage(savedLang);
+        }
+
         // Tab functionality
         const tabButtons = document.querySelectorAll('.tab-button');
         const experiencePanels = document.querySelectorAll('.experience-panel');
